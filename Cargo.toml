@@ -1,10 +1,11 @@
-[package]
-name = "swim"
-version = "0.1.0"
-edition = "2021"
-description = "Swim - Reserved package"
-license = "MIT"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[dependencies]
+[workspace]
+members = [
+    "swim",
+    "swim-core",
+    "swim-util",
+    "swim-contrib",
+    "swim-db",
+    "swim-cli",
+    "swim-template",
+    "swim-middleware"
+]
