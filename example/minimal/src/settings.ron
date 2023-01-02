@@ -1,0 +1,22 @@
+Settings(
+    swim: CoreSettings(
+        // The name of the application.
+        name: "Polls",
+
+        // The secret key of the application.
+        secret_key: "secret",
+
+        // Language code of the application.
+        language_code: "en-us",
+
+        // Time zone of the application.
+        time_zone: "UTC",
+    ),
+    database: DatabaseSettings(
+        // The database URL of the application.
+        url: "env:DATABASE_URL",
+
+        // The database type of the application.
+        type: "postgres",
+    ),
+)
