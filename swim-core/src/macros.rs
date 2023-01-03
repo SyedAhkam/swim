@@ -9,11 +9,10 @@
 /// }
 #[macro_export]
 macro_rules! swim {
-    ($project:ident $(,host=$host:literal)? $(,port=$port:literal)?) => {{
+    ($project:ident $(,host=$host:expr)? $(,port=$port:expr)?) => {{
         Swim::with(Box::new($project))
             $(.host($host))?
             $(.port($port))?
             .swim()
-            .await
     }};
 }
