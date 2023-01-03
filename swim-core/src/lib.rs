@@ -50,5 +50,11 @@ impl Swim {
     /// This method is `async`, and will block until the server is stopped.
     pub async fn swim(self) {
         println!("{:#?}", self);
+
+        let settings = self.project.settings();
+        let apps = self.project.apps();
+        let middlewares = self.project.middlewares();
+
+        loop {}
     }
 }

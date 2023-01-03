@@ -7,7 +7,7 @@ struct Minimal;
 impl Project for Minimal {
     fn settings(&self) -> Settings {
         // Settings::builder().extend_ron("settings.ron").build()
-        Settings
+        Settings::builder().build()
     }
 
     fn apps(&self) -> Vec<Box<dyn App>> {
@@ -21,9 +21,9 @@ impl Project for Minimal {
     }
 }
 
-#[tokio::main]
+#[tokio::main(flavor = "multi_thread")]
 async fn main() {
-    swim!(Minimal, host="127.0.0.1", port=8000);
+    swim!(Minimal, host = "127.0.0.1", port = 8000);
 
     // Or alternatively, using the builder pattern:
     // Swim::with(Box::new(Minimal))

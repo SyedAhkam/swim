@@ -1,1 +1,1 @@
-pub trait App {}
+pub trait App: std::fmt::Debug {}

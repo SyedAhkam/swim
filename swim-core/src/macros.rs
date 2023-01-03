@@ -14,5 +14,6 @@ macro_rules! swim {
             $(.host($host))?
             $(.port($port))?
             .swim()
+            .await
     }};
 }
