@@ -1,17 +1,18 @@
 use swim::prelude::*;
-use swim_contrib::admin::AdminApp;
+// use swim_contrib::admin::AdminApp;
 
-#[derive(Swim)]
+#[derive(Debug)]
 struct Minimal;
 
 impl Project for Minimal {
-    fn settings(&self) -> SwimSettings {
-        SwimSettings::builder().extend_ron("settings.ron").build()
+    fn settings(&self) -> Settings {
+        // Settings::builder().extend_ron("settings.ron").build()
+        Settings
     }
 
     fn apps(&self) -> Vec<Box<dyn App>> {
         vec![
-            AdminApp::builder().mount_at("/admin").build().into()
+            // AdminApp::builder().mount_at("/admin").build().into()
         ]
     }
 
@@ -22,9 +23,12 @@ impl Project for Minimal {
 
 #[tokio::main]
 async fn main() {
-    Minimal::new()
-        .host("0.0.0.0")
-        .port(8000)
-        .swim()
-        .await;
+    swim!(Minimal, host="127.0.0.1", port=8000);
+
+    // Or alternatively, using the builder pattern:
+    // Swim::with(Box::new(Minimal))
+    //     .host("127.0.0.1")
+    //     .port(8000)
+    //     .swim()
+    //     .await;
 }

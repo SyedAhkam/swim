@@ -7,5 +7,5 @@ members = [
     "swim-db",
     "swim-cli",
     "swim-template",
-    "swim-middleware"
+    "swim-middleware",
 ]

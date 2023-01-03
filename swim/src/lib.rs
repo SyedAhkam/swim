@@ -1,14 +1,9 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
+#![doc = include_str!(concat!(env!("CARGO_WORKSPACE_DIR"), "/README.md"))]
+
+/// Prelude for the `swim` crate.
+pub mod prelude {
+    pub use swim_core::{swim, App, Middleware, Project, Settings, Swim};
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
-}
+// Re-exports
+pub use swim_core::{swim, App, Middleware, Project, Settings, Swim};
