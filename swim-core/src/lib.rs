@@ -1,10 +1,16 @@
 //! The `swim_core` crate provides the core structures and traits for building a Swim application.
 
 pub mod app;
+pub mod http;
 pub mod macros;
 pub mod middleware;
 pub mod project;
 pub mod settings;
+
+use std::{
+    net::{Ipv4Addr, SocketAddr},
+    str::FromStr,
+};
 
 // Re-exports
 pub use crate::{
@@ -54,12 +60,31 @@ impl Swim {
     ///
     /// This method is `async`, and will block until the server is stopped.
     pub async fn swim(self) {
-        let settings = self.project.settings();
-        let apps = self.project.apps();
-        let middlewares = self.project.middlewares();
+        let _settings = self.project.settings();
+        let _apps = self.project.apps();
+        let _middlewares = self.project.middlewares();
 
-        println!("{:#?}\n{:#?}\n{:#?}", self, settings, apps);
+        // Parse the host and port
+        let ip_address = match self.host {
+            host if host == "localhost" => Ipv4Addr::LOCALHOST,
+            host => Ipv4Addr::from_str(&host).expect("Invalid IP address"),
+        };
+        let address = SocketAddr::from((ip_address, self.port));
 
-        loop {}
+        // Bind the server
+        let make_svc = hyper::service::make_service_fn(move |_| async move {
+            Ok::<_, hyper::Error>(hyper::service::service_fn(move |_req| async move {
+                let mut response = hyper::Response::new(hyper::Body::empty());
+
+                // Apply server-specific headers to the response.
+                http::apply_server_specific_headers(&mut response);
+
+                Ok::<_, hyper::Error>(response)
+            }))
+        });
+
+        if let Err(e) = hyper::server::Server::bind(&address).serve(make_svc).await {
+            eprintln!("Server error: {}", e);
+        }
     }
 }

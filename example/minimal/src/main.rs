@@ -21,7 +21,7 @@ impl Project for Minimal {
 
 #[tokio::main(flavor = "multi_thread")]
 async fn main() {
-    swim!(Minimal, host = "127.0.0.1", port = 8000);
+    swim!(Minimal, host = "localhost", port = 8000);
 
     // Or alternatively, using the builder pattern:
     // Swim::with(Box::new(Minimal))
