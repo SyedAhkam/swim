@@ -1,7 +1,7 @@
 Settings(
-    swim: CoreSettings(
+    core: CoreSettings(
         // The name of the application.
-        name: "Polls",
+        name: "Minimal",
 
         // The secret key of the application.
         secret_key: "secret",
@@ -10,7 +10,7 @@ Settings(
         language_code: "en-us",
 
         // Time zone of the application.
-        time_zone: "UTC",
+        timezone: "UTC",
     ),
     database: DatabaseSettings(
         // The database URL of the application.

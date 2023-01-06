@@ -7,7 +7,12 @@ pub mod project;
 pub mod settings;
 
 // Re-exports
-pub use crate::{app::App, middleware::Middleware, project::Project, settings::Settings};
+pub use crate::{
+    app::App,
+    middleware::Middleware,
+    project::Project,
+    settings::{CoreSettings, DatabaseSettings, Settings},
+};
 
 /// The `Swim` struct is the main entry point for a Swim application.
 ///
@@ -49,11 +54,11 @@ impl Swim {
     ///
     /// This method is `async`, and will block until the server is stopped.
     pub async fn swim(self) {
-        println!("{:#?}", self);
-
         let settings = self.project.settings();
         let apps = self.project.apps();
         let middlewares = self.project.middlewares();
+
+        println!("{:#?}\n{:#?}\n{:#?}", self, settings, apps);
 
         loop {}
     }

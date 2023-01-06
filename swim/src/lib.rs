@@ -2,8 +2,12 @@
 
 /// Prelude for the `swim` crate.
 pub mod prelude {
-    pub use swim_core::{swim, App, Middleware, Project, Settings, Swim};
+    pub use swim_core::{
+        swim, App, CoreSettings, DatabaseSettings, Middleware, Project, Settings, Swim,
+    };
 }
 
 // Re-exports
-pub use swim_core::{swim, App, Middleware, Project, Settings, Swim};
+pub use swim_core::{
+    swim, App, CoreSettings, DatabaseSettings, Middleware, Project, Settings, Swim,
+};
