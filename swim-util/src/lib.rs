@@ -1,14 +1,3 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
+//! `swim_util` crate is responsible for providing utilities for the `swim` crate.
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
-}
+pub mod macros;

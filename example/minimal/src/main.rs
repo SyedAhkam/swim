@@ -6,7 +6,7 @@ struct Minimal;
 impl Project for Minimal {
     fn settings(&self) -> Settings {
         Settings::builder()
-            .extend_ron(concat!(env!("CARGO_MANIFEST_DIR"), "/settings.ron"))
+            .extend_ron(relative!("settings.ron"))
             .build()
     }
 

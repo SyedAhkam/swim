@@ -8,3 +8,4 @@ readme = "../README.md"
 
 [dependencies]
 swim-core = { path = "../swim-core" }
+swim-util = { path = "../swim-util" }
