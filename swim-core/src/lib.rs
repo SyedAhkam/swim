@@ -4,7 +4,9 @@ pub mod app;
 pub mod http;
 pub mod macros;
 pub mod middleware;
+pub mod model;
 pub mod project;
+pub mod route;
 pub mod settings;
 
 use std::{
@@ -14,9 +16,11 @@ use std::{
 
 // Re-exports
 pub use crate::{
-    app::App,
+    app::{App, AppConfig},
     middleware::Middleware,
+    model::Model,
     project::Project,
+    route::Route,
     settings::{CoreSettings, DatabaseSettings, Settings},
 };
 

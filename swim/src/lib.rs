@@ -4,7 +4,8 @@
 /// Prelude for the `swim` crate.
 pub mod prelude {
     pub use swim_core::{
-        swim, App, CoreSettings, DatabaseSettings, Middleware, Project, Settings, Swim,
+        swim, App, AppConfig, CoreSettings, DatabaseSettings, Middleware, Model, Project, Route,
+        Settings, Swim,
     };
 
     pub use swim_util::relative;
@@ -12,7 +13,8 @@ pub mod prelude {
 
 // Re-exports
 pub use swim_core::{
-    swim, App, CoreSettings, DatabaseSettings, Middleware, Project, Settings, Swim,
+    swim, App, AppConfig, CoreSettings, DatabaseSettings, Middleware, Model, Project, Route,
+    Settings, Swim,
 };
 
 /// Various utilities that are helpful while building a Swim application.

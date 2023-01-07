@@ -9,3 +9,7 @@ members = [
     "swim-template",
     "swim-middleware",
 ]
+exclude = [
+    "examples/minimal",
+    "examples/apps",
+]
