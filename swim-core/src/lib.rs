@@ -8,6 +8,7 @@ pub mod model;
 pub mod project;
 pub mod route;
 pub mod settings;
+pub mod view;
 
 use std::{
     net::{Ipv4Addr, SocketAddr},
@@ -17,11 +18,13 @@ use std::{
 // Re-exports
 pub use crate::{
     app::{App, AppConfig},
+    http::{Body, Request, Response, StatusCode},
     middleware::Middleware,
     model::Model,
     project::Project,
     route::Route,
     settings::{CoreSettings, DatabaseSettings, Settings},
+    view::View,
 };
 
 /// The `Swim` struct is the main entry point for a Swim application.

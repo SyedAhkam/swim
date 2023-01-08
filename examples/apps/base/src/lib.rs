@@ -1,4 +1,7 @@
 use swim::prelude::*;
+use view::HelloView;
+
+pub mod view;
 
 #[derive(Debug)]
 pub struct BaseApp;
@@ -17,6 +20,6 @@ impl App for BaseApp {
     }
 
     fn routes(&self) -> Vec<Route> {
-        vec![]
+        vec![Route::new("/hello", HelloView.into())]
     }
 }
