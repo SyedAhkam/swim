@@ -1,1 +1,1 @@
-pub trait Middleware {}
+pub trait Middleware: std::fmt::Debug + Send + Sync {}

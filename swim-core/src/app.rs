@@ -8,7 +8,7 @@ use crate::{model::Model, route::Route};
 /// The `App` trait is implemented to divide a project into modular units referred to as `apps`.
 ///
 /// An `App` is a collection of `AppConfig`, `Models` and `Routes` that are mounted at a specific path.
-pub trait App: std::fmt::Debug {
+pub trait App: std::fmt::Debug + Send + Sync {
     /// Returns the mount path for this app.
     fn mount(&self) -> &'static str;
 
