@@ -20,6 +20,6 @@ impl App for BaseApp {
     }
 
     fn routes(&self) -> Vec<Route> {
-        vec![Route::new("/hello", HelloView.into())]
+        vec![Route::new("/hello", HelloView)]
     }
 }

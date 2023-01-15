@@ -1,3 +1,5 @@
+use std::sync::Arc;
+
 use crate::view::View;
 
 /// A route is a mapping between a path and a view.
@@ -6,15 +8,15 @@ use crate::view::View;
 #[derive(Debug)]
 pub struct Route {
     pub path: String,
-    pub view: Box<dyn View>,
+    pub view: Arc<dyn View>,
 }
 
 impl Route {
     /// Creates a new route.
-    pub fn new(path: &str, view: Box<dyn View>) -> Self {
+    pub fn new(path: &str, view: impl View) -> Self {
         Self {
             path: path.to_string(),
-            view,
+            view: Arc::new(view),
         }
     }
 }

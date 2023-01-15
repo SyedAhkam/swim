@@ -2,10 +2,10 @@ use crate::http::{Body, Request, Response, StatusCode};
 
 macro_rules! blank_status_response {
     ($status:expr) => {
-        Response::builder()
+        Ok(Response::builder()
             .status($status)
             .body(Body::empty())
-            .unwrap()
+            .unwrap())
     };
 }
 
@@ -35,38 +35,30 @@ macro_rules! blank_status_response {
 /// }
 /// ```
 #[allow(unused_variables)]
-pub trait View: std::fmt::Debug {
+#[async_trait::async_trait]
+pub trait View: std::fmt::Debug + Send + Sync + 'static {
     /// Called when a request is made to a route with a `GET` method.
-    fn get(&self, request: Request<Body>) -> Response<Body> {
+    async fn get(&self, request: Request<Body>) -> Result<Response<Body>, hyper::Error> {
         blank_status_response!(StatusCode::METHOD_NOT_ALLOWED)
     }
 
     /// Called when a request is made to a route with a `POST` method.
-    fn post(&self, request: Request<Body>) -> Response<Body> {
+    async fn post(&self, request: Request<Body>) -> Result<Response<Body>, hyper::Error> {
         blank_status_response!(StatusCode::METHOD_NOT_ALLOWED)
     }
 
     /// Called when a request is made to a route with a `PUT` method.
-    fn put(&self, request: Request<Body>) -> Response<Body> {
+    async fn put(&self, request: Request<Body>) -> Result<Response<Body>, hyper::Error> {
         blank_status_response!(StatusCode::METHOD_NOT_ALLOWED)
     }
 
     /// Called when a request is made to a route with a `PATCH` method.
-    fn patch(&self, request: Request<Body>) -> Response<Body> {
+    async fn patch(&self, request: Request<Body>) -> Result<Response<Body>, hyper::Error> {
         blank_status_response!(StatusCode::METHOD_NOT_ALLOWED)
     }
 
     /// Called when a request is made to a route with a `DELETE` method.
-    fn delete(&self, request: Request<Body>) -> Response<Body> {
+    async fn delete(&self, request: Request<Body>) -> Result<Response<Body>, hyper::Error> {
         blank_status_response!(StatusCode::METHOD_NOT_ALLOWED)
-    }
-}
-
-/// Allows a `View` to be converted into a `Box<dyn View>`.
-///
-/// Facilitates the use of the `into` method.
-impl<V: View + 'static> From<V> for Box<dyn View> {
-    fn from(view: V) -> Self {
-        Box::new(view)
     }
 }

@@ -5,7 +5,7 @@
 pub mod prelude {
     pub use swim_core::{
         swim, App, AppConfig, Body, CoreSettings, DatabaseSettings, Middleware, Model, Project,
-        Request, Response, Route, Settings, StatusCode, Swim, View,
+        Request, Response, Result, Route, Settings, StatusCode, Swim, View,
     };
 
     pub use swim_util::relative;
@@ -14,7 +14,7 @@ pub mod prelude {
 // Re-exports
 pub use swim_core::{
     swim, App, AppConfig, Body, CoreSettings, DatabaseSettings, Middleware, Model, Project,
-    Request, Response, Route, Settings, StatusCode, Swim, View,
+    Request, Response, Result, Route, Settings, StatusCode, Swim, View,
 };
 
 /// Various utilities that are helpful while building a Swim application.

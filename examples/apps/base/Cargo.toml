@@ -7,3 +7,4 @@ edition = "2021"
 
 [dependencies]
 swim = { path = "../../../swim" }
+async-trait = "0.1"

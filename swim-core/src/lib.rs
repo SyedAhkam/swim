@@ -15,6 +15,8 @@ use std::{
     str::FromStr,
 };
 
+use routerify::{Router, RouterService};
+
 // Re-exports
 pub use crate::{
     app::{App, AppConfig},
@@ -26,6 +28,9 @@ pub use crate::{
     settings::{CoreSettings, DatabaseSettings, Settings},
     view::View,
 };
+
+// TODO: use custom error type
+pub type Result<T> = std::result::Result<T, hyper::Error>;
 
 /// The `Swim` struct is the main entry point for a Swim application.
 ///
@@ -67,10 +72,6 @@ impl Swim {
     ///
     /// This method is `async`, and will block until the server is stopped.
     pub async fn swim(self) {
-        let _settings = self.project.settings();
-        let _apps = self.project.apps();
-        let _middlewares = self.project.middlewares();
-
         // Parse the host and port
         let ip_address = match self.host {
             host if host == "localhost" => Ipv4Addr::LOCALHOST,
@@ -78,19 +79,65 @@ impl Swim {
         };
         let address = SocketAddr::from((ip_address, self.port));
 
-        // Bind the server
-        let make_svc = hyper::service::make_service_fn(move |_| async move {
-            Ok::<_, hyper::Error>(hyper::service::service_fn(move |_req| async move {
-                let mut response = hyper::Response::new(hyper::Body::empty());
+        let _settings = self.project.settings();
+        let apps = self.project.apps();
+        let _middlewares = self.project.middlewares();
 
-                // Apply server-specific headers to the response.
-                http::apply_server_specific_headers(&mut response);
+        // Returns a router
+        let get_router = || {
+            let mut builder = Router::<Body, hyper::Error>::builder();
 
-                Ok::<_, hyper::Error>(response)
-            }))
-        });
+            for app in apps.iter() {
+                let mut scoped_router_builder = Router::builder();
 
-        if let Err(e) = hyper::server::Server::bind(&address).serve(make_svc).await {
+                for route in app.routes() {
+                    let view_get = route.view.clone();
+                    let view_post = route.view.clone();
+                    let view_put = route.view.clone();
+                    let view_patch = route.view.clone();
+                    let view_delete = route.view.clone();
+
+                    // Add binding for GET method
+                    scoped_router_builder = scoped_router_builder.get(&route.path, move |req| {
+                        let view = view_get.clone();
+                        async move { view.get(req).await }
+                    });
+
+                    // Add binding for POST method
+                    scoped_router_builder = scoped_router_builder.post(&route.path, move |req| {
+                        let view = view_post.clone();
+                        async move { view.post(req).await }
+                    });
+
+                    // Add binding for PUT method
+                    scoped_router_builder = scoped_router_builder.put(&route.path, move |req| {
+                        let view = view_put.clone();
+                        async move { view.put(req).await }
+                    });
+
+                    // Add binding for PATCH method
+                    scoped_router_builder = scoped_router_builder.patch(&route.path, move |req| {
+                        let view = view_patch.clone();
+                        async move { view.patch(req).await }
+                    });
+
+                    // Add binding for DELETE method
+                    scoped_router_builder = scoped_router_builder.delete(&route.path, move |req| {
+                        let view = view_delete.clone();
+                        async move { view.delete(req).await }
+                    });
+                }
+
+                builder = builder.scope(app.mount(), scoped_router_builder.build().unwrap());
+            }
+
+            builder.build().unwrap()
+        };
+
+        // Make a service to handle each connection.
+        let service = RouterService::new(get_router()).unwrap();
+
+        if let Err(e) = hyper::server::Server::bind(&address).serve(service).await {
             eprintln!("Server error: {}", e);
         }
     }
