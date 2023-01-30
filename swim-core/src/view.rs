@@ -1,4 +1,7 @@
-use crate::http::{Body, Request, Response, StatusCode};
+use crate::{
+    http::{Body, Request, Response, StatusCode},
+    Result,
+};
 
 macro_rules! blank_status_response {
     ($status:expr) => {
@@ -38,27 +41,27 @@ macro_rules! blank_status_response {
 #[async_trait::async_trait]
 pub trait View: std::fmt::Debug + Send + Sync + 'static {
     /// Called when a request is made to a route with a `GET` method.
-    async fn get(&self, request: Request<Body>) -> Result<Response<Body>, hyper::Error> {
+    async fn get(&self, request: Request<Body>) -> Result<Response<Body>> {
         blank_status_response!(StatusCode::METHOD_NOT_ALLOWED)
     }
 
     /// Called when a request is made to a route with a `POST` method.
-    async fn post(&self, request: Request<Body>) -> Result<Response<Body>, hyper::Error> {
+    async fn post(&self, request: Request<Body>) -> Result<Response<Body>> {
         blank_status_response!(StatusCode::METHOD_NOT_ALLOWED)
     }
 
     /// Called when a request is made to a route with a `PUT` method.
-    async fn put(&self, request: Request<Body>) -> Result<Response<Body>, hyper::Error> {
+    async fn put(&self, request: Request<Body>) -> Result<Response<Body>> {
         blank_status_response!(StatusCode::METHOD_NOT_ALLOWED)
     }
 
     /// Called when a request is made to a route with a `PATCH` method.
-    async fn patch(&self, request: Request<Body>) -> Result<Response<Body>, hyper::Error> {
+    async fn patch(&self, request: Request<Body>) -> Result<Response<Body>> {
         blank_status_response!(StatusCode::METHOD_NOT_ALLOWED)
     }
 
     /// Called when a request is made to a route with a `DELETE` method.
-    async fn delete(&self, request: Request<Body>) -> Result<Response<Body>, hyper::Error> {
+    async fn delete(&self, request: Request<Body>) -> Result<Response<Body>> {
         blank_status_response!(StatusCode::METHOD_NOT_ALLOWED)
     }
 }

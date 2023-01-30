@@ -13,7 +13,7 @@ pub mod prelude {
 
 // Re-exports
 pub use swim_core::{
-    swim, App, AppConfig, Body, CoreSettings, DatabaseSettings, Middleware, Model, Project,
+    swim, App, AppConfig, Body, CoreSettings, DatabaseSettings, Error, Middleware, Model, Project,
     Request, Response, Result, Route, Settings, StatusCode, Swim, View,
 };
 

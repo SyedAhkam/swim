@@ -1,6 +1,7 @@
 //! The `swim_core` crate provides the core structures and traits for building a Swim application.
 
 pub mod app;
+pub mod error;
 pub mod http;
 pub mod macros;
 pub mod middleware;
@@ -20,6 +21,7 @@ use routerify::{Router, RouterService};
 // Re-exports
 pub use crate::{
     app::{App, AppConfig},
+    error::Error,
     http::{Body, Request, Response, StatusCode},
     middleware::Middleware,
     model::Model,
@@ -29,8 +31,10 @@ pub use crate::{
     view::View,
 };
 
-// TODO: use custom error type
-pub type Result<T> = std::result::Result<T, hyper::Error>;
+/// Convinience Result type for the `swim` crate.
+///
+/// This is just a type alias for `std::result::Result<T, Error>`. Where `T` is the type of the value that is returned on success and `Error` is the swim error type.
+pub type Result<T> = std::result::Result<T, Error>;
 
 /// The `Swim` struct is the main entry point for a Swim application.
 ///
@@ -85,7 +89,7 @@ impl Swim {
 
         // Returns a router
         let get_router = || {
-            let mut builder = Router::<Body, hyper::Error>::builder();
+            let mut builder = Router::<Body, Error>::builder();
 
             for app in apps.iter() {
                 let mut scoped_router_builder = Router::builder();
