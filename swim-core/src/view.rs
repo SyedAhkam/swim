@@ -42,7 +42,7 @@ macro_rules! blank_status_response {
 pub trait View: std::fmt::Debug + Send + Sync + 'static {
     /// Called when a request is made to a route with a `GET` method.
     async fn get(&self, request: Request<Body>) -> Result<Response<Body>> {
-        blank_status_response!(StatusCode::METHOD_NOT_ALLOWED)
+        blank_status_response!(StatusCode::NOT_FOUND)
     }
 
     /// Called when a request is made to a route with a `POST` method.
