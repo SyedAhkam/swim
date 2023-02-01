@@ -14,6 +14,7 @@ pub mod view;
 use std::{
     net::{Ipv4Addr, SocketAddr},
     str::FromStr,
+    sync::Arc,
 };
 
 use routerify::{Router, RouterService};
@@ -85,7 +86,7 @@ impl Swim {
 
         let _settings = self.project.settings();
         let apps = self.project.apps();
-        let _middlewares = self.project.middlewares();
+        let middlewares = self.project.middlewares();
 
         // Returns a router
         let get_router = || {
@@ -133,6 +134,27 @@ impl Swim {
                 }
 
                 builder = builder.scope(app.mount(), scoped_router_builder.build().unwrap());
+            }
+
+            // Middlewares
+            for middleware in middlewares.into_iter() {
+                let middleware = Arc::new(middleware);
+
+                // Pre middleware
+                let middleware_pre = middleware.clone();
+                builder = builder.middleware(routerify::Middleware::pre(move |req| {
+                    let middleware_cloned = middleware_pre.clone();
+
+                    async move { middleware_cloned.pre(req).await }
+                }));
+
+                // Post middleware
+                let middleware_post = middleware.clone();
+                builder = builder.middleware(routerify::Middleware::post(move |res| {
+                    let middleware_cloned = middleware_post.clone();
+
+                    async move { middleware_cloned.post(res).await }
+                }));
             }
 
             builder.build().unwrap()
