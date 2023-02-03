@@ -1,5 +1,11 @@
 # Swim ⚡🏊
 
+![Crates.io](https://img.shields.io/crates/v/swim)
+![docs.rs](https://img.shields.io/docsrs/swim)
+![Crates.io](https://img.shields.io/crates/d/swim)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/SyedAhkam/swim/build-and-test.yml?style=plastic)
+![Crates.io](https://img.shields.io/crates/l/swim)
+
 <!-- cargo-rdme start -->
 
 An opinionated batteries-included approach to a rust web framework.
