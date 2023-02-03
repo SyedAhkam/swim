@@ -1,9 +1,10 @@
 # Swim ⚡🏊
 
+<!-- cargo-rdme start -->
+
 An opinionated batteries-included approach to a rust web framework.
 
 The idea is to take the best parts of the rust ecosystem and combine them into a framework that is easy to use and provides a good developer experience.
-
 
 ## Features
 
@@ -26,18 +27,18 @@ struct MyProject;
 impl Project for MyProject {
     fn settings(&self) -> Settings {
         Settings::builder()
-            .extend_ron(relative!("settings.ron"))
+            .extend_ron(relative! ("settings.ron"))
             .build()
     }
 
     fn apps(&self) -> Vec<Box<dyn App>> {
-        vec![
+        vec! [
             MyApp.into()
         ]
     }
 
     fn middleware(&self) -> Vec<Box<dyn Middleware>> {
-        vec![
+        vec! [
             MyMiddleware.into()
         ]
     }
@@ -62,11 +63,11 @@ impl App for MyApp {
     }
 
     fn models(&self) -> Vec<Box<dyn Model>> {
-        vec![]
+        vec! []
     }
 
     fn routes(&self) -> Vec<Route> {
-        vec![
+        vec! [
             Route::new("/", IndexView),
             Route::new("/hello", HelloView)
         ]
@@ -88,14 +89,14 @@ impl View for HelloView {
     async fn get(&self, request: Request<Body>) -> Result<Response<Body>> {
         Ok(Response::builder()
             .status(StatusCode::OK)
-            .body(Body::from("Say hello to Swim!"))
+            .body(Body::from("Say hello to Swim! "))
             .unwrap())
     }
 
     async fn post(&self, request: Request<Body>) -> Result<Response<Body>> {
         Ok(Response::builder()
             .status(StatusCode::OK)
-            .body(Body::from("It's a post request!"))
+            .body(Body::from("It's a post request! "))
             .unwrap())
     }
 }
@@ -113,13 +114,13 @@ pub struct Logger;
 #[async_trait::async_trait]
 impl Middleware for Logger {
     async fn pre(&self, request: Request<Body>) -> Result<Request<Body>> {
-        println!("New request: {:?}", request.uri());
+        println! ("New request: {:?}", request.uri());
 
         Ok(request)
     }
 
     async fn post(&self, response: Response<Body>) -> Result<Response<Body>> {
-        println!("Response: {:?}", response.status());
+        println! ("Response: {:?}", response.status());
 
         Ok(response)
     }
@@ -133,9 +134,12 @@ You may use the elegant swim macro to run your project.
 ```rs
 #[tokio::main(flavor = "multi_thread")]
 async fn main() {
-    swim!(MyProject, host = "localhost", port = 8000);
+    swim! (MyProject, host = "localhost", port = 8000);
 }
 ```
+
+<!-- cargo-rdme end -->
+
 
 ## Current status
 

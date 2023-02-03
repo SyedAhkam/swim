@@ -1,0 +1,11 @@
+# Override the README file path.  When this is not set cargo rdme will use the file path defined
+# in the project’s `Cargo.toml`.
+readme-path = "README.md"
+
+# What line terminator to use when generating the README file.  This can be "lf" or "crlf".
+line-terminator = "lf"
+
+# If you are using a workspace to hold multiple projects, use this to select the project from
+# which to extract the documentation from.  It can be useful to also set `readme-path` to create
+# the README file in the root of the project.
+workspace-project = "swim"
