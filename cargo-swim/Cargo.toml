@@ -1,6 +1,6 @@
 [package]
 name = "cargo-swim"
-version = "0.0.0"
+version = "0.2.0"
 edition = "2021"
 authors = ["Syed Ahkam <smahkam57@gmail.com>"]
 homepage = "https://github.com/SyedAhkam/swim"
