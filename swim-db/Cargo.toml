@@ -2,6 +2,13 @@
 name = "swim-db"
 version = "0.0.0"
 edition = "2021"
+authors = ["Syed Ahkam <smahkam57@gmail.com>"]
+homepage = "https://github.com/SyedAhkam/swim"
+repository = "https://github.com/SyedAhkam/swim"
+license = "MIT"
+categories = ["web-programming::http-server"]
+keywords = ["swim", "web-framework", "database"]
+readme = "../README.md"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
