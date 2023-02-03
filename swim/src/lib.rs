@@ -3,6 +3,15 @@
 //!
 //! The idea is to take the best parts of the rust ecosystem and combine them into a framework that is easy to use and provides a good developer experience.
 //!
+//! # Installation
+//!
+//! Add the following to your `Cargo.toml` file.
+//!
+//! ```toml
+//! [dependencies]
+//! swim = "0.2"
+//! ```
+//!
 //! # Features
 //!
 //! - Go blazingly fast with [hyper](https://github.com/hyperium/hyper) and [tokio](https://github.com/tokio-rs/tokio)
@@ -11,8 +20,6 @@
 //! - Database support with [SeaORM](https://github.com/SeaQL/sea-orm) (planned)
 //! - Templating with [Tera](https://github.com/Keats/tera) (planned)
 //! - Dependency injection (planned)
-//!
-//! Note: This project is still in development.
 //!
 //! # Building a project
 //!
