@@ -86,7 +86,8 @@ impl App for MyApp {
     fn routes(&self) -> Vec<Route> {
         vec! [
             Route::new("/", IndexView),
-            Route::new("/hello", HelloView)
+            Route::new("/hello", HelloView),
+            Route::new("/greeting/:name", GreetingView),
         ]
     }
 }
