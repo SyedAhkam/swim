@@ -1,0 +1,19 @@
+on:
+    push:
+      branches:
+        - master
+    pull_request:
+      branches:
+        - master
+  name: Check README
+  jobs:
+    check-readme:
+      name: Check README
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+      - name: Check if the README is up to date.
+        run: |
+          cargo install cargo-rdme
+          cargo rdme --check
