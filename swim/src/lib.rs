@@ -1,6 +1,6 @@
 // Use cargo rdme to generate the README.md file from this doc comment.
 //! An opinionated batteries-included approach to a rust web framework.
-//! Action should fail!
+//!
 //! The idea is to take the best parts of the rust ecosystem and combine them into a framework that is easy to use and provides a good developer experience.
 //!
 //! # Features
