@@ -9,7 +9,6 @@ repository = "https://github.com/SyedAhkam/swim"
 license = "MIT"
 categories = ["web-programming::http-server"]
 keywords = ["swim", "server", "web-framework", "asynchronous", "hyper"]
-readme = "../README.md"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
