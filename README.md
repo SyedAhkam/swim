@@ -1,10 +1,10 @@
 # Swim ⚡🏊
 
-![Crates.io](https://img.shields.io/crates/v/swim)
-![docs.rs](https://img.shields.io/docsrs/swim)
-![Crates.io](https://img.shields.io/crates/d/swim)
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/SyedAhkam/swim/build-and-test.yml?style=plastic)
-![Crates.io](https://img.shields.io/crates/l/swim)
+[![Crates.io](https://img.shields.io/crates/v/swim)](https://crates.io/crates/swim)
+[![docs.rs](https://img.shields.io/docsrs/swim)](https://docs.rs/swim)
+[![Crates.io](https://img.shields.io/crates/d/swim)](https://crates.io/crates/swim)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/SyedAhkam/swim/build-and-test.yml?style=plastic)](https://github.com/SyedAhkam/swim/actions/workflows/build-and-test.yml)
+[![Crates.io](https://img.shields.io/crates/l/swim)](LICENSE)
 
 <!-- cargo-rdme start -->
 
