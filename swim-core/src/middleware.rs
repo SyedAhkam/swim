@@ -7,19 +7,20 @@ use crate::{Body, Request, Response, Result};
 /// Example:
 ///
 /// ```
-/// use swim::prelude::*;
+/// # use swim_core::{Middleware, Request, Response, Result, Body};
 ///
 /// #[derive(Debug)]
 /// struct Logger;
 ///
+/// #[async_trait::async_trait]
 /// impl Middleware for Logger {
-///     fn pre(&self, request: Request<Body>) -> Result<Response<Body>> {
+///     async fn pre(&self, request: Request<Body>) -> Result<Request<Body>> {
 ///         println!("New request: {:?}", request.uri());
 ///
 ///         Ok(request)
 ///     }
 ///
-///     fn post(&self, request: Request<Body>, response: Response<Body>) -> Result<Response<Body>> {
+///     async fn post(&self, response: Response<Body>) -> Result<Response<Body>> {
 ///         println!("Response: {:?}", response.status());
 ///
 ///         Ok(response)

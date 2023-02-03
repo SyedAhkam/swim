@@ -55,7 +55,7 @@ impl Settings {
 /// # Examples
 ///
 /// ```rust
-/// use swim_core::settings::Settings;
+/// # use swim_core::settings::{Settings, CoreSettings, DatabaseSettings};
 ///
 /// let settings = Settings::builder()
 ///     .core(CoreSettings {
@@ -70,7 +70,7 @@ impl Settings {
 ///     .build();
 /// ```
 ///
-/// ```rust
+/// ```no_run
 /// use swim_core::settings::Settings;
 ///
 /// let settings = Settings::builder()

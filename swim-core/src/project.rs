@@ -8,21 +8,22 @@ use crate::{app::App, middleware::Middleware, settings::Settings};
 ///
 /// Example:
 ///
-/// ```rust
-/// use swim::prelude::*;
+/// ```no_run
+/// # use swim_core::{Project, Settings, App, Middleware};
+/// # macro_rules! relative { ($path:expr) => { ($path) } } // mock macro
 ///
 /// #[derive(Debug)]
 /// struct CoolProject;
 ///
 /// impl Project for CoolProject {
 ///     fn settings(&self) -> Settings {
-///         Settings::builder().extend_ron("settings.ron").build()
+///         Settings::builder()
+///             .extend_ron(relative!("settings.ron"))
+///             .build()
 ///     }
 ///
 ///     fn apps(&self) -> Vec<Box<dyn App>> {
-///         vec![
-///             AdminApp::builder().mount_at("/admin").build().into()
-///         ]
+///         vec![]
 ///     }
 ///
 ///     fn middlewares(&self) -> Vec<Box<dyn Middleware>> {

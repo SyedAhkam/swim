@@ -4,7 +4,7 @@
 ///
 /// # Examples
 ///
-/// ```
+/// ```no_run
 /// use swim_util::relative;
 ///
 /// let path = relative!("settings.ron");

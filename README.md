@@ -21,7 +21,9 @@ Note: This project is still in development.
 
 You define a project by defining a struct that implements the `Project` trait. It is the highest-level abstraction in the framework. It is responsible for defining the settings, apps, and middleware for your project.
 
-```rs
+```rust
+use swim::prelude::*;
+
 struct MyProject;
 
 impl Project for MyProject {
@@ -50,7 +52,9 @@ impl Project for MyProject {
 
 You define an app by defining a struct that implements the `App` trait. It is responsible for defining the routes and views for your app.
 
-```rs
+```rust
+use swim::prelude::*;
+
 struct MyApp;
 
 impl App for MyApp {
@@ -80,7 +84,7 @@ impl App for MyApp {
 
 You define a view by defining a struct that implements the `View` trait. It is responsible for handling the request and returning a response. You can implement the specific HTTP methods you want to handle.
 
-```rs
+```rust
 #[derive(Debug)]
 pub struct HelloView;
 
@@ -107,8 +111,8 @@ impl View for HelloView {
 
 You define a middleware by defining a struct that implements the `Middleware` trait. It is responsible for handling the request and returning a response. You can implement the specific HTTP methods you want to handle.
 
-```rs
-##[derive(Debug)]
+```rust
+#[derive(Debug)]
 pub struct Logger;
 
 #[async_trait::async_trait]
@@ -131,7 +135,7 @@ impl Middleware for Logger {
 
 You may use the elegant swim macro to run your project.
 
-```rs
+```rust
 #[tokio::main(flavor = "multi_thread")]
 async fn main() {
     swim! (MyProject, host = "localhost", port = 8000);

@@ -23,18 +23,18 @@ macro_rules! blank_status_response {
 /// # Example
 ///
 /// ```
-/// use swim::prelude::*;
-///
+/// # use swim_core::{Body, Request, Response, StatusCode, View, Result};
 /// #[derive(Debug)]
 /// pub struct HelloView;
 ///
+/// #[async_trait::async_trait]
 /// impl View for HelloView {
-///    fn get(&self, request: Request<Body>) -> Response<Body> {
-///       Response::builder()
-///         .status(StatusCode::OK)
-///         .body(Body::from("Hello, World!"))
-///         .unwrap()
-///   }
+///     async fn get(&self, request: Request<Body>) -> Result<Response<Body>> {
+///         Ok(Response::builder()
+///             .status(StatusCode::OK)
+///             .body(Body::from("Say hello to Swim!"))
+///             .unwrap())
+///     }
 /// }
 /// ```
 #[allow(unused_variables)]
