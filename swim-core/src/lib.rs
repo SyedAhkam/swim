@@ -32,6 +32,11 @@ pub use crate::{
     view::View,
 };
 
+// Re-export external crates for convenience
+pub use async_trait;
+pub use hyper;
+pub use routerify;
+
 /// Convinience Result type for the `swim` crate.
 ///
 /// This is just a type alias for `std::result::Result<T, Error>`. Where `T` is the type of the value that is returned on success and `Error` is the swim error type.

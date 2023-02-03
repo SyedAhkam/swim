@@ -77,7 +77,8 @@
 //!     fn routes(&self) -> Vec<Route> {
 //!         vec! [
 //!             Route::new("/", IndexView),
-//!             Route::new("/hello", HelloView)
+//!             Route::new("/hello", HelloView),
+//!             Route::new("/greeting/:name", GreetingView),
 //!         ]
 //!     }
 //! }
@@ -150,6 +151,9 @@
 
 /// Prelude for the `swim` crate.
 pub mod prelude {
+    pub use swim_core::async_trait;
+    pub use swim_core::routerify::ext::RequestExt;
+
     pub use swim_core::{
         swim, App, AppConfig, Body, CoreSettings, DatabaseSettings, Middleware, Model, Project,
         Request, Response, Result, Route, Settings, StatusCode, Swim, View,
@@ -157,6 +161,11 @@ pub mod prelude {
 
     pub use swim_util::relative;
 }
+
+/// Crates that are used internally by the `swim` crate.
+pub use swim_core::async_trait;
+pub use swim_core::hyper;
+pub use swim_core::routerify;
 
 // Re-exports
 pub use swim_core::{
