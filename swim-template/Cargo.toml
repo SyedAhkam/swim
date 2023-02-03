@@ -1,6 +1,6 @@
 [package]
 name = "swim-template"
-version = "0.0.0"
+version = "0.2.0"
 edition = "2021"
 authors = ["Syed Ahkam <smahkam57@gmail.com>"]
 description = "Templating helpers for the swim web framework"
