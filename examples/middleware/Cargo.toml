@@ -8,4 +8,3 @@ edition = "2021"
 [dependencies]
 swim = { path = "../../swim" }
 tokio = { version = "1.23.0", features = ["full"] }
-async-trait = "0.1"
