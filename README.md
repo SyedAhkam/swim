@@ -126,6 +126,16 @@ impl Middleware for Logger {
 }
 ```
 
+## Running the project
+
+You may use the elegant swim macro to run your project.
+
+```rs
+#[tokio::main(flavor = "multi_thread")]
+async fn main() {
+    swim!(MyProject, host = "localhost", port = 8000);
+}
+```
 
 ## Current status
 
