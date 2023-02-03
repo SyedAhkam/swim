@@ -21,8 +21,6 @@ The idea is to take the best parts of the rust ecosystem and combine them into a
 - Templating with [Tera](https://github.com/Keats/tera) (planned)
 - Dependency injection (planned)
 
-Note: This project is still in development.
-
 ## Building a project
 
 You define a project by defining a struct that implements the `Project` trait. It is the highest-level abstraction in the framework. It is responsible for defining the settings, apps, and middleware for your project.
