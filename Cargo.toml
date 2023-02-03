@@ -5,7 +5,7 @@ members = [
     "swim-util",
     "swim-contrib",
     "swim-db",
-    "swim-cli",
+    "cargo-swim",
     "swim-template",
     "swim-middleware",
 ]

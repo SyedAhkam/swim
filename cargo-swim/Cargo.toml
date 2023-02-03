@@ -1,5 +1,5 @@
 [package]
-name = "swim-cli"
+name = "cargo-swim"
 version = "0.0.0"
 edition = "2021"
 
