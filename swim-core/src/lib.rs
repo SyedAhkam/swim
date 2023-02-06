@@ -3,12 +3,14 @@
 pub mod app;
 pub mod error;
 pub mod http;
+pub mod log;
 pub mod macros;
 pub mod middleware;
 pub mod model;
 pub mod project;
 pub mod route;
 pub mod settings;
+pub mod sugar;
 pub mod view;
 
 use std::{
@@ -93,6 +95,15 @@ impl Swim {
         let apps = self.project.apps();
         let middlewares = self.project.middlewares();
 
+        // Print some sweet project details (inspired by Rocket :D)
+        project_details!(&self.project, &address);
+        for app in apps.iter() {
+            app_details!(app);
+        }
+        if !middlewares.is_empty() {
+            middleware_listing!(middlewares);
+        }
+
         // Returns a router
         let get_router = || {
             let mut builder = Router::<Body, Error>::builder();
@@ -165,9 +176,13 @@ impl Swim {
             builder.build().unwrap()
         };
 
+        // Report the server address to the user.
+        launch_info!(address);
+
         // Make a service to handle each connection.
         let service = RouterService::new(get_router()).unwrap();
 
+        // Bind and serve the service.
         if let Err(e) = hyper::server::Server::bind(&address).serve(service).await {
             eprintln!("Server error: {}", e);
         }
