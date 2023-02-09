@@ -1,4 +1,6 @@
-use crate::{Body, Request, Response, Result};
+use hyper::body::HttpBody;
+
+use crate::{request_info, response_info, Body, Request, Response, Result};
 
 /// The `Middleware` trait is implemented by middleware structs.
 ///
@@ -52,5 +54,26 @@ pub trait Middleware: std::fmt::Debug + Send + Sync + 'static {
 impl<M: Middleware + 'static> From<M> for Box<dyn Middleware> {
     fn from(middleware: M) -> Self {
         Box::new(middleware)
+    }
+}
+
+/// A built-in middleware that logs requests and responses.
+///
+/// This middleware is enabled by default.
+#[derive(Debug)]
+pub struct Logger;
+
+#[async_trait::async_trait]
+impl Middleware for Logger {
+    async fn pre(&self, request: Request<Body>) -> Result<Request<Body>> {
+        request_info!(request);
+
+        Ok(request)
+    }
+
+    async fn post(&self, response: Response<Body>) -> Result<Response<Body>> {
+        response_info!(response);
+
+        Ok(response)
     }
 }

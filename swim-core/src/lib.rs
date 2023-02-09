@@ -26,7 +26,7 @@ pub use crate::{
     app::{App, AppConfig},
     error::Error,
     http::{Body, Request, Response, StatusCode},
-    middleware::Middleware,
+    middleware::{Logger, Middleware},
     model::Model,
     project::Project,
     route::Route,
@@ -93,7 +93,13 @@ impl Swim {
 
         let _settings = self.project.settings();
         let apps = self.project.apps();
-        let middlewares = self.project.middlewares();
+
+        // Create a vector of middlewares, with default middlewares
+        // This is done so that default middlewares take precedence over user-defined middlewares
+        let mut middlewares: Vec<Box<dyn Middleware>> = vec![Box::new(Logger)];
+
+        // User-defined middlewares
+        middlewares.extend(self.project.middlewares());
 
         // Print some sweet project details (inspired by Rocket :D)
         project_details!(&self.project, &address);
