@@ -83,11 +83,11 @@ impl Swim {
     /// Starts the server and runs the application.
     ///
     /// This method is `async`, and will block until the server is stopped.
-    pub async fn swim(self) {
+    pub async fn swim(self) -> Result<()> {
         // Parse the host and port
         let ip_address = match self.host {
             host if host == "localhost" => Ipv4Addr::LOCALHOST,
-            host => Ipv4Addr::from_str(&host).expect("Invalid IP address"),
+            host => Ipv4Addr::from_str(&host)?,
         };
         let address = SocketAddr::from((ip_address, self.port));
 
@@ -189,8 +189,10 @@ impl Swim {
         let service = RouterService::new(get_router()).unwrap();
 
         // Bind and serve the service.
-        if let Err(e) = hyper::server::Server::bind(&address).serve(service).await {
-            eprintln!("Server error: {}", e);
-        }
+        hyper::server::Server::try_bind(&address)?
+            .serve(service)
+            .await?;
+
+        Ok(())
     }
 }

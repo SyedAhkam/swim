@@ -14,6 +14,7 @@
 /// async fn main() {
 ///    swim!(Minimal, host="0.0.0.0", port=8000);
 /// }
+/// ```
 #[macro_export]
 macro_rules! swim {
     ($project:ident $(,host=$host:expr)? $(,port=$port:expr)?) => {{
@@ -21,6 +22,10 @@ macro_rules! swim {
             $(.host($host))?
             $(.port($port))?
             .swim()
-            .await
+            .await.map_err(|err| {
+                eprintln!("⚠️  Launch failed: {}", err);
+
+                err
+            })
     }};
 }

@@ -5,4 +5,7 @@
 pub enum Error {
     #[error("Hyper error: {0}")]
     Hyper(#[from] hyper::Error),
+
+    #[error("Invalid bind address or port")]
+    AddrParse(#[from] std::net::AddrParseError),
 }
