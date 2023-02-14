@@ -33,8 +33,9 @@
 //! impl Project for MyProject {
 //!     fn settings(&self) -> Settings {
 //!         Settings::builder()
-//!             .extend_ron(relative! ("settings.ron"))
+//!             .extend_ron(relative!("settings.ron"))
 //!             .build()
+//!             .unwrap()
 //!     }
 //!
 //!     fn apps(&self) -> Vec<Box<dyn App>> {

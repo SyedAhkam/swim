@@ -20,6 +20,7 @@ use crate::{app::App, middleware::Middleware, settings::Settings};
 ///         Settings::builder()
 ///             .extend_ron(relative!("settings.ron"))
 ///             .build()
+///             .unwrap()
 ///     }
 ///
 ///     fn apps(&self) -> Vec<Box<dyn App>> {

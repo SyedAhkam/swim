@@ -1,4 +1,5 @@
-use std::{fs::File, io::Read, path::Path};
+use crate::{Error, Result};
+use std::{fs::File, io::Read, path::PathBuf};
 
 use serde::Deserialize;
 
@@ -80,6 +81,7 @@ impl Settings {
 pub struct SettingsBuilder {
     core: Option<CoreSettings>,
     database: Option<DatabaseSettings>,
+    ron_path: Option<PathBuf>,
 }
 
 impl SettingsBuilder {
@@ -88,6 +90,7 @@ impl SettingsBuilder {
         Self {
             core: None,
             database: None,
+            ron_path: None,
         }
     }
 
@@ -103,26 +106,36 @@ impl SettingsBuilder {
         self
     }
 
-    /// Loads the settings from a `.ron` file.
-    pub fn extend_ron<P: AsRef<Path> + std::fmt::Debug>(mut self, path: P) -> Self {
+    fn load_ron(mut self, path: PathBuf) -> Result<Self> {
         // Read the file
         let mut file = File::open(path).expect("Failed to open settings file");
         let mut contents = String::new();
         file.read_to_string(&mut contents)
-            .expect("Failed to read settings file");
+            .map_err(|_| Error::RonRead)?;
 
         // Parse the file
         let settings: Settings = ron::from_str(&contents).expect("Failed to parse settings file");
 
-        // Load the settings
+        //  Set the fields
         self.core = Some(settings.core);
         self.database = Some(settings.database);
+
+        Ok(self)
+    }
+
+    /// Loads the settings from a `.ron` file.
+    pub fn extend_ron<P: Into<PathBuf> + std::fmt::Debug>(mut self, path: P) -> Self {
+        self.ron_path = Some(path.into());
 
         self
     }
 
     /// Builds the `Settings` instance.
-    pub fn build(self) -> Settings {
+    pub fn build(mut self) -> Result<Settings> {
+        if let Some(path) = self.ron_path.to_owned() {
+            self = self.load_ron(path)?;
+        }
+
         let core = self.core.expect("Core settings are required");
         let database = self.database.expect("Database settings are required");
 
@@ -130,6 +143,6 @@ impl SettingsBuilder {
             panic!("You must set a secret key");
         }
 
-        Settings { core, database }
+        Ok(Settings { core, database })
     }
 }

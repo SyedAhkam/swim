@@ -8,4 +8,7 @@ pub enum Error {
 
     #[error("Invalid bind address or port")]
     AddrParse(#[from] std::net::AddrParseError),
+
+    #[error("Failed to read ron file")]
+    RonRead,
 }

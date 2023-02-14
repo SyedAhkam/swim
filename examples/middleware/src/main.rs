@@ -10,6 +10,7 @@ impl Project for Minimal {
         Settings::builder()
             .extend_ron(relative!("settings.ron"))
             .build()
+            .unwrap()
     }
 
     fn apps(&self) -> Vec<Box<dyn App>> {

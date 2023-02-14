@@ -27,5 +27,6 @@ macro_rules! swim {
 
                 err
             })
+            .unwrap();
     }};
 }
