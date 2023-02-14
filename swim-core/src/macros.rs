@@ -1,5 +1,7 @@
 /// A macro to simplify the creation of a new `Swim` instance.
 ///
+/// `host` and `port` are optional parameters, and will default to `127.0.0.1` and `8000` respectively.
+///
 /// # Examples
 ///
 /// ```no_run
