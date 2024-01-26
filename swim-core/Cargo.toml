@@ -14,7 +14,7 @@ readme = "../README.md"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-tokio = { version = "1.0", features = [] }
+tokio = { version = "1.35", features = [] }
 ron = "0.8"
 serde = { version = "1.0", features = ["derive"] }
 hyper = { version = "0.14", features = [
@@ -32,4 +32,4 @@ yansi = "0.5"
 chrono = "0.4"
 
 [dev-dependencies]
-tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] } # for testing
+tokio = { version = "1.35", features = ["macros", "rt-multi-thread"] } # for testing
