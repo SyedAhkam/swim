@@ -115,7 +115,7 @@
 //!
 //! # Defining middlewares
 //!
-//! You define a middleware by defining a struct that implements the `Middleware` trait. It is responsible for handling the request and returning a response. You can implement the specific HTTP methods you want to handle.
+//! You define a middleware by defining a struct that implements the `Middleware` trait. You may hook into the `pre` and `post` methods which are capable of modifying the upcoming request and leaving response respectively (or you could simply use these for monitoring traffic).
 //!
 //! ```ignore
 //! ##[derive(Debug)]
