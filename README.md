@@ -6,6 +6,8 @@
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/SyedAhkam/swim/build-and-test.yml?style=plastic)](https://github.com/SyedAhkam/swim/actions/workflows/build-and-test.yml)
 [![Crates.io](https://img.shields.io/crates/l/swim)](LICENSE)
 
+![](assets/swim.png)
+
 <!-- cargo-rdme start -->
 
 An opinionated batteries-included approach to a rust web framework.
