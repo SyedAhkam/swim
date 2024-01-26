@@ -5,19 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## 0.3.0 (2024-01-26)
+
+<csr-id-e5818f52fd0b8f21b7a92747a951cd47362a0eb8/>
+<csr-id-27c148e50661798b7373bd6947ea8c2eff0adee8/>
 
 ### Other
 
  - <csr-id-e5818f52fd0b8f21b7a92747a951cd47362a0eb8/> tokio to 1.35
  - <csr-id-27c148e50661798b7373bd6947ea8c2eff0adee8/> default request logging middleware
 
+### Chore
+
+ - <csr-id-e4669abeef822dea9151346daeadf1b91b3b8d40/> initialise CHANGELOG.md for each crate
+
 ### Commit Statistics
 
 <csr-read-only-do-not-edit/>
 
- - 30 commits contributed to the release over the course of 389 calendar days.
- - 2 commits were understood as [conventional](https://www.conventionalcommits.org).
+ - 31 commits contributed to the release over the course of 389 calendar days.
+ - 3 commits were understood as [conventional](https://www.conventionalcommits.org).
  - 0 issues like '(#ID)' were seen in commit messages
 
 ### Commit Details
@@ -27,6 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 <details><summary>view details</summary>
 
  * **Uncategorized**
+    - Initialise CHANGELOG.md for each crate ([`e4669ab`](https://github.com/SyedAhkam/swim/commit/e4669abeef822dea9151346daeadf1b91b3b8d40))
     - Tokio to 1.35 ([`e5818f5`](https://github.com/SyedAhkam/swim/commit/e5818f52fd0b8f21b7a92747a951cd47362a0eb8))
     - Add STUF warning for Model trait ([`8188b13`](https://github.com/SyedAhkam/swim/commit/8188b13dff511a7300a28b3d6b2916e8b73d12de))
     - Update docs for swim macro ([`7fecb15`](https://github.com/SyedAhkam/swim/commit/7fecb1505405a22e4f36849189213ef403423967))

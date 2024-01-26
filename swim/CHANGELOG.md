@@ -5,7 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## 0.3.0 (2024-01-26)
+
+### Chore
+
+ - <csr-id-e4669abeef822dea9151346daeadf1b91b3b8d40/> initialise CHANGELOG.md for each crate
 
 ### Bug Fixes
 
@@ -15,8 +19,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <csr-read-only-do-not-edit/>
 
- - 28 commits contributed to the release over the course of 389 calendar days.
- - 1 commit was understood as [conventional](https://www.conventionalcommits.org).
+ - 29 commits contributed to the release over the course of 389 calendar days.
+ - 2 commits were understood as [conventional](https://www.conventionalcommits.org).
  - 0 issues like '(#ID)' were seen in commit messages
 
 ### Commit Details
@@ -26,6 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 <details><summary>view details</summary>
 
  * **Uncategorized**
+    - Initialise CHANGELOG.md for each crate ([`e4669ab`](https://github.com/SyedAhkam/swim/commit/e4669abeef822dea9151346daeadf1b91b3b8d40))
     - Readme sync issue ([`addad41`](https://github.com/SyedAhkam/swim/commit/addad412c79e3b4f388956f3c1624deebe7549b5))
     - Improve error handling ([`11915da`](https://github.com/SyedAhkam/swim/commit/11915da63f60e8ae9d92d20f7abfe0fd4dbc6c3b))
     - Release 0.2.2 ([`a64a320`](https://github.com/SyedAhkam/swim/commit/a64a320dd3832b9759b4198230e1e1e1e3e90317))

@@ -1,6 +1,6 @@
 [package]
 name = "swim"
-version = "0.2.2"
+version = "0.3.0"
 edition = "2021"
 authors = ["Syed Ahkam <smahkam57@gmail.com>"]
 description = "A batteries included rust web framework  ⚡🏊"
@@ -14,5 +14,5 @@ readme = "../README.md"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-swim-core = { path = "../swim-core", version="0.2.1" }
-swim-util = { path = "../swim-util", version="0.2.1" }
+swim-core = { path = "../swim-core", version= "^0.3.0" }
+swim-util = { path = "../swim-util", version= "^0.3.0" }

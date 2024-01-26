@@ -1,6 +1,6 @@
 [package]
 name = "swim-contrib"
-version = "0.2.1"
+version = "0.3.0"
 edition = "2021"
 authors = ["Syed Ahkam <smahkam57@gmail.com>"]
 description = "Contributed modules/apps for the swim web framework"

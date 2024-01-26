@@ -5,14 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## 0.3.0 (2024-01-26)
+
+### Chore
+
+ - <csr-id-e4669abeef822dea9151346daeadf1b91b3b8d40/> initialise CHANGELOG.md for each crate
 
 ### Commit Statistics
 
 <csr-read-only-do-not-edit/>
 
- - 11 commits contributed to the release over the course of 389 calendar days.
- - 0 commits were understood as [conventional](https://www.conventionalcommits.org).
+ - 12 commits contributed to the release over the course of 389 calendar days.
+ - 1 commit was understood as [conventional](https://www.conventionalcommits.org).
  - 0 issues like '(#ID)' were seen in commit messages
 
 ### Commit Details
@@ -22,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 <details><summary>view details</summary>
 
  * **Uncategorized**
+    - Initialise CHANGELOG.md for each crate ([`e4669ab`](https://github.com/SyedAhkam/swim/commit/e4669abeef822dea9151346daeadf1b91b3b8d40))
     - Release 0.2.1 ([`c803d09`](https://github.com/SyedAhkam/swim/commit/c803d093573d2210a3812bc6958e5f5360ae613d))
     - Fix doc tests ([`e27f6c3`](https://github.com/SyedAhkam/swim/commit/e27f6c374bdc4da912065d4112371467725eaa71))
     - Release 0.2.0 ([`c47777b`](https://github.com/SyedAhkam/swim/commit/c47777bc32d57673378d3ad7db2c236fc8f060d6))
