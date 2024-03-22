@@ -9,7 +9,7 @@
 //!
 //! ```toml
 //! [dependencies]
-//! swim = "0.2"
+//! swim = "0.3"
 //! ```
 //!
 //! # Features
